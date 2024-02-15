@@ -1,0 +1,42 @@
+server:
+  servlet:
+    context-path: /jira-extensao
+
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/postgres?currentSchema=jira}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:2512}
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      poolName: SpringBootJPAHikariCP
+      minimumIdle: 20
+      maximumPoolSize: 200
+      connectionTimeout: 30000
+      idleTimeout: 30000
+      maxLifetime: 2000000
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      properties:
+        hibernate:
+          default_schema: jira
+
+springdoc:
+  swagger-ui:
+    path: /public/swagger
+    
+
+jiratuneup:
+  openai:
+    server: ${IA_URL_SERVER:https://api.openai.com}
+    token-ia: ${TOKEN_IA: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}
+    
+logging:
+  level:
+    academy.wakanda.jiratuneup: ${LOG_LEVEL:DEBUG}
