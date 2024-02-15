@@ -1,0 +1,35 @@
+{
+    "manifest_version": 2,
+    "name": "Leitura de História",
+    "version": "1.0",
+    "description": "Extensão para capturar a descrição da história no Jira",
+    "icons": {
+        "48": "icon48.png",
+        "128": "icon128.png"
+    },
+    "background": {
+        "scripts": ["src/background.js"],
+        "persistent": false
+    },
+    "browser_action": {
+        "default_icon": {
+            "19": "icon19.png"
+        },
+        "default_title": "Instagram Dowload",
+        "default_popup": "src/index.html"
+    },
+    "content_scripts": [
+        {
+            "js": [
+              "src/components/buttonLeitura.js",
+              "src/service/leituraArquivo.js",
+              "src/main.js"
+  
+            ],
+            "matches": [
+                "*://*.atlassian.net/*"
+            ]
+        }
+    ]
+  }
+  
