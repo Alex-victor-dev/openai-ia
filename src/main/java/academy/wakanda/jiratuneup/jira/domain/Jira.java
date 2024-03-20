@@ -20,6 +20,7 @@ public class Jira {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(columnDefinition = "uuid", name = "idJira", updatable = false, unique = true, nullable = false)
 	private UUID idJira;
+	@Column(name = "descricaoHistoria", length = 1000)
 	private String descricaoHistoria;
 
 	public Jira(String descricao) {
